@@ -78,6 +78,7 @@ form.addEventListener("submit", (e) => getImageOfTheDay(e));
 function getImageOfTheDay(e) {
     e.preventDefault();
     if (dateInput.value) {
+        picImgEle.src = "./assets/load-loading.gif";
         fetchDataFunction(dateInput.value);
     } else {
         alertUser();
