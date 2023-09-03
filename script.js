@@ -18,6 +18,12 @@ function alertUser() {
     alert(`Date must be between Jun 16, 1995 and ${new Date().toJSON().slice(0, 10)} (Today)`);
 }
 
+
+// Function to set the image as the loader gif
+function setGifImg() {
+    picImgEle.src = "./assets/load-loading.gif";
+}
+
 // Generic function to fetch the data
 async function fetchDataFunction(Ondate) {
     if (Ondate) {
@@ -28,6 +34,7 @@ async function fetchDataFunction(Ondate) {
                 alertUser();
                 return;
             }
+            setGifImg();
             let result = await response.json();
             updateUi(result);
         } catch (error) {
@@ -44,7 +51,7 @@ async function fetchDataFunction(Ondate) {
                 return;
             }
             let result = await response.json();
-            console.log(result);
+            setGifImg();
             updateUi(result);
         } catch (error) {
             console.log(error);
@@ -78,7 +85,6 @@ form.addEventListener("submit", (e) => getImageOfTheDay(e));
 function getImageOfTheDay(e) {
     e.preventDefault();
     if (dateInput.value) {
-        picImgEle.src = "./assets/load-loading.gif";
         fetchDataFunction(dateInput.value);
     } else {
         alertUser();
@@ -120,5 +126,6 @@ function addSearchToHistory(date) {
 // Handling the click on recent search btns
 function handleSearchHistoryBtns(e) {
     let clickedDate = e.target.textContent;
+    setGifImg();
     fetchDataFunction(clickedDate);
 }
