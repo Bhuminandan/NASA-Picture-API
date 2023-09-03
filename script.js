@@ -36,6 +36,7 @@ async function fetchDataFunction(Ondate) {
             }
             setGifImg();
             let result = await response.json();
+            console.log(result)
             updateUi(result);
         } catch (error) {
             console.log(error);
@@ -95,7 +96,7 @@ function getImageOfTheDay(e) {
 // Function for updating UI 
 function updateUi(resObj) {
     picHeading.innerHTML = `Picture On ${resObj.date}`;
-    picImgEle.src = resObj.hdurl;
+    picImgEle.src = resObj.url;
     desciption.textContent = resObj.explanation;
     saveSearch(resObj.date);
 };
