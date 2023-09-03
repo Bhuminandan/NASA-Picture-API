@@ -126,7 +126,7 @@ function addSearchToHistory(date) {
 
 // Handling the click on recent search btns
 function handleSearchHistoryBtns(e) {
-    let clickedDate = e.target.textContent;
     setGifImg();
+    let clickedDate = e.target.textContent;
     fetchDataFunction(clickedDate);
 }
